@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "app/node_modules/.bin/nuxt",
-    "build": "app/node_modules/.bin/nuxt build",
-    "start": "app/node_modules/.bin/nuxt start"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
   },
   "dependencies": {
     "nuxt": "^3.13.2",
