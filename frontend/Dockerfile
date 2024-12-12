@@ -1,37 +1,25 @@
-# مرحله اول: مرحله ساخت (Build Stage)
-FROM node:20.18.0-slim as build
+# Use the official Node.js image as a base image
+ARG NODE_VERSION=20.18.0
+FROM node:${NODE_VERSION}-slim as base
 
-# تنظیم محیط به production
-ENV NODE_ENV production
-
-# تنظیم دایرکتوری کاری
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# کپی کردن فایل‌های پکیج برای نصب وابستگی‌ها
-COPY ./frontend/package*.json ./
+# Set the environment variable
+ENV NODE_ENV=production
 
-# نصب وابستگی‌ها
+# Copy package.json and package-lock.json to install dependencies
+COPY ./frontend/package*.json ./
 RUN npm install
 
-# کپی کردن تمام کد برنامه
+# Copy the rest of the frontend files
 COPY ./frontend .
 
-# ساخت پروژه برای حالت تولید
-RUN npm run build  
-# مرحله دوم: مرحله اجرای (Run Stage)
-FROM node:20.18.0-slim as base
+# Build the Nuxt 3 application
+RUN npm run build
 
-# تنظیم محیط به production
-ENV NODE_ENV production
-
-# تنظیم دایرکتوری کاری
-WORKDIR /usr/src/app
-
-# کپی کردن فایل‌های ساخته‌شده از مرحله build
-COPY --from=build /usr/src/app/.output /usr/src/app/.output
-
-# پورت مورد استفاده برای برنامه
+# Expose port 3000
 EXPOSE 3000
 
-# اجرای پروژه از فایل .output
-CMD [ "node", ".output/server/index.mjs" ]  
+# Start the application by running the server
+CMD [ "node", ".output/server/index.mjs" ]
