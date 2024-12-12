@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.cairo {
+  font-family: "Cairo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+.rtl-justify{
+  direction:rtl;
+text-align:justify;
+}
+
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('@/public/assets/fonts/Vazir-Thin-FD-WOL.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('@/public/assets/fonts/Vazir-Medium-FD-WOL.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('@/public/assets/fonts/Vazir-Light-FD-WOL.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Vazir';
+  src: url('@/public/assets/fonts/Vazir-Bold-FD-WOL.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+.vazir{
+  font-family: 'Vazir';
+}
