@@ -22,4 +22,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Start the application by running the server
-CMD [ "node", ".output/server/index.mjs" ]
+CMD [ "npm", "run", "start" ]
