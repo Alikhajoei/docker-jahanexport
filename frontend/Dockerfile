@@ -1,8 +1,6 @@
 # getting the latest lts version of node
 FROM node:lts-alpine
 
-# mainainer
-LABEL maintainer="ali.khajoei.96@gmail.com"
 
 # putting project in dev mode
 ENV NODE_ENV development
