@@ -17,8 +17,7 @@ RUN npm install
 COPY ./frontend .
 
 # ساخت پروژه برای حالت تولید
-RUN npm run build
-
+RUN npm run build  
 # مرحله دوم: مرحله اجرای (Run Stage)
 FROM node:20.18.0-slim as base
 
@@ -35,4 +34,4 @@ COPY --from=build /usr/src/app/.output /usr/src/app/.output
 EXPOSE 3000
 
 # اجرای پروژه از فایل .output
-CMD [ "node", ".output/server/index.mjs" ]
+CMD [ "node", ".output/server/index.mjs" ]  
