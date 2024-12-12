@@ -28,5 +28,17 @@ services:
       - 3000:3000
     restart: always
 
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile  # مسیر Dockerfile برای Nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf  # تنظیمات Nginx
+    ports:
+      - 80:80  # پورت 80 برای Nginx
+    depends_on:
+      - frontend  # ابتدا frontend باید بالا بیاید
+
 volumes:
   pgdata:  # You can use this volume for database persistence if needed
