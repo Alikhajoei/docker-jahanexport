@@ -17,7 +17,7 @@ RUN npm install
 COPY ./frontend .
 
 # Run the build step
-RUN npx nuxi build  # اضافه کردن این خط برای ساخت اپلیکیشن Nuxt
+RUN npx nuxi build
 
 # Expose port 3000 for the frontend application
 EXPOSE 3000
