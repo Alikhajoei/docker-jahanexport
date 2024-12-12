@@ -24,7 +24,7 @@ RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
 EXPOSE 3000
 
 # Command to run the development server (default)
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
 
 # Production command (uncomment the next line if you want to default to production)
-#CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start"]
