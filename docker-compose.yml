@@ -11,24 +11,18 @@ services:
     ports:
       - 8000:8000
     restart: always
-    networks:
-      - app_network
 
   frontend:
     container_name: frontend
     build:
       context: .
-      dockerfile: ./frontend/Dockerfile
+      dockerfile: ./frontend/Dockerfile  # مسیر جدید Dockerfile
     volumes:
       - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-    environment:
-      - WATCHPACK_POLLING=true
+      - /usr/src/app/node_modules  # Avoid overwriting node_modules from the host
     ports:
       - 3000:3000
     restart: always
-    networks:
-      - app_network
 
   nginx:
     container_name: nginx
@@ -36,14 +30,11 @@ services:
       context: .
       dockerfile: ./nginx/Dockerfile
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # تنظیمات Nginx
     ports:
-      - 80:80
+      - 80:80  # پورت 80 برای Nginx
     depends_on:
-      - frontend
-    networks:
-      - app_network
+      - frontend  # ابتدا frontend باید بالا بیاید
 
-networks:
-  app_network:
-    driver: bridge
+volumes:
+  pgdata:
