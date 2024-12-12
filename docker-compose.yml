@@ -11,8 +11,8 @@ services:
     ports:
       - 8000:8000
     restart: always
-    environment:
-      - DEBUG=True  # You can add environment variables here if needed
+    networks:
+      - app_network
 
   frontend:
     container_name: frontend
@@ -21,24 +21,26 @@ services:
       dockerfile: ./frontend/Dockerfile
     volumes:
       - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules  # Avoid overwriting node_modules from the host
+      - /usr/src/app/node_modules
     environment:
       - WATCHPACK_POLLING=true
     ports:
       - 3000:3000
     restart: always
+    networks:
+      - app_network
 
   nginx:
     container_name: nginx
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile  # مسیر Dockerfile برای Nginx
+      dockerfile: ./nginx/Dockerfile
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # تنظیمات Nginx
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - 80:80  # پورت 80 برای Nginx
+      - 80:80
     depends_on:
-      - frontend  # ابتدا frontend باید بالا بیاید
+      - frontend
     networks:
       - app_network
 
