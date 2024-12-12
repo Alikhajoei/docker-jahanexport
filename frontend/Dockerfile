@@ -11,7 +11,7 @@ RUN npm install
 COPY ./frontend .
 
 RUN npm run build  
-
+COPY --from=build /usr/src/app/.output /usr/src/app/.output
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD [ "node", ".output/server/index.mjs" ]
