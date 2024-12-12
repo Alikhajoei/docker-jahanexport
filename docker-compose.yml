@@ -34,7 +34,7 @@ services:
       context: .
       dockerfile: ./nginx/Dockerfile  # مسیر Dockerfile برای Nginx
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # تنظیمات Nginx
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # تنظیمات Nginx
     ports:
       - 80:80  # پورت 80 برای Nginx
     depends_on:

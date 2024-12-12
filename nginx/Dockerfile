@@ -5,7 +5,7 @@
 
 
 # استفاده از Nginx official image
-FROM nginx:stable-alpine
+FROM nginx:alpine
 
 # کپی کردن تنظیمات Nginx به داخل کانتینر
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
