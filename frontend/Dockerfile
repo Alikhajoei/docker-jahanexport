@@ -8,7 +8,7 @@ ENV NODE_ENV development
 WORKDIR /usr/src/app
 
 # Copy the package.json and package-lock.json to leverage Docker cache
-COPY ./package*.json ./
+COPY ./frontend/package*.json ./
 
 # Install dependencies
 RUN npm install
