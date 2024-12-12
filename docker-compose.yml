@@ -39,6 +39,9 @@ services:
       - 80:80  # پورت 80 برای Nginx
     depends_on:
       - frontend  # ابتدا frontend باید بالا بیاید
+    networks:
+      - app_network
 
-volumes:
-  pgdata:  # You can use this volume for database persistence if needed
+networks:
+  app_network:
+    driver: bridge
