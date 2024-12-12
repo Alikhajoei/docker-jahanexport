@@ -19,7 +19,7 @@ COPY ./frontend .
 
 # If in development, use the dev server. In production, build and then start.
 RUN if [ "$NODE_ENV" = "production" ]; then npm run build; fi
-
+RUN npx nuxi build 
 # Expose port 3000 for the frontend application
 EXPOSE 3000
 
