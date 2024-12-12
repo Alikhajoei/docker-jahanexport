@@ -1,14 +1,8 @@
-
-# # runing nginx and putting in loop
-# CMD ["nginx", "-g", "daemon off;"]
-
-
-
-# استفاده از Nginx official image
+# Use Nginx official image
 FROM nginx:alpine
 
-# کپی کردن تنظیمات Nginx به داخل کانتینر
+# Copy the nginx.conf file into the container
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
-# پورت 80 را باز کنید
+# Expose port 80
 EXPOSE 80
