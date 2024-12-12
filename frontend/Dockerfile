@@ -1,24 +1,23 @@
-# getting the latest lts version of node
+# Use the latest LTS version of Node.js
 FROM node:lts-alpine
 
-
-# putting project in dev mode
+# Set environment to development
 ENV NODE_ENV development
 
-# Add a work directory
+# Set working directory for the application
 WORKDIR /usr/src/app
 
-# copying packages
-COPY ./app/package*.json .
+# Copy the package.json and package-lock.json to leverage Docker cache
+COPY ./app/package*.json ./
 
-# Cache and Install dependencies
+# Install dependencies
 RUN npm install
 
-# Copy app files
+# Copy the rest of the application files
 COPY ./app .
 
-# Expose port
+# Expose port 3000 for the frontend application
 EXPOSE 3000
 
-# starting the dev server
-CMD [ "npm", "start" ]
+# Command to run the development server
+CMD ["npm", "start"]
